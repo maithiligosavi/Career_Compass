@@ -1,1 +1,2 @@
-# Career_Compass
+# College-Project
+This repo is for college project

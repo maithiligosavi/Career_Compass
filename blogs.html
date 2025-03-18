@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blogs & Articles - Career Compass</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header>
+      <nav>
+        <div class="nav-container">
+          <a href="#" class="logo">Career Compass</a>
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="service.html">Services</a>
+            <a href="blogs.html">Blogs</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+
+            <button class="login-btn" onclick="openModal()">Login</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+      <h1>Career Insights & Resources</h1>
+      <p>
+        Explore our collection of expert articles, industry insights, and career
+        development resources
+      </p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="blogs-container">
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input type="text" placeholder="Search articles..." id="searchInput" />
+      </div>
+
+      <!-- Filter Section -->
+      <div class="filter-section">
+        <div class="filter-buttons">
+          <button class="filter-button active" data-category="all">All</button>
+          <button class="filter-button" data-category="career-tips">
+            Career Tips
+          </button>
+          <button class="filter-button" data-category="industry-insights">
+            Industry Insights
+          </button>
+          <button class="filter-button" data-category="skill-development">
+            Skill Development
+          </button>
+          <button class="filter-button" data-category="job-search">
+            Job Search
+          </button>
+        </div>
+      </div>
+
+      <!-- Blog Grid -->
+      <div class="blog-grid">
+        <!-- Career Tips Article -->
+        <a
+          href="articles/career-planning.html"
+          class="blog-card"
+          data-category="career-tips"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+            alt="Career Planning"
+            class="blog-image"
+          />
+          <div class="blog-content">
+            <div class="blog-category">Career Tips</div>
+            <h2 class="blog-title">
+              10 Essential Steps for Career Planning in 2024
+            </h2>
+            <p class="blog-excerpt">
+              Learn the most effective strategies for planning your career path
+              in today's dynamic job market.
+            </p>
+            <div class="blog-meta">
+              <span>5 min read</span>
+              <span>March 15, 2024</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Industry Insights Article -->
+        <a
+          href="articles/tech-future.html"
+          class="blog-card"
+          data-category="industry-insights"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa"
+            alt="Tech Industry"
+            class="blog-image"
+          />
+          <div class="blog-content">
+            <div class="blog-category">Industry Insights</div>
+            <h2 class="blog-title">
+              The Future of Tech: Emerging Career Opportunities
+            </h2>
+            <p class="blog-excerpt">
+              Discover the most promising career paths in technology and how to
+              prepare for them.
+            </p>
+            <div class="blog-meta">
+              <span>8 min read</span>
+              <span>March 12, 2024</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Career Guidance Portal. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Filter functionality
+      const filterButtons = document.querySelectorAll(".filter-button");
+      const blogCards = document.querySelectorAll(".blog-card");
+      const searchInput = document.getElementById("searchInput");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active class from all buttons
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+          // Add active class to clicked button
+          button.classList.add("active");
+
+          const category = button.getAttribute("data-category");
+
+          blogCards.forEach((card) => {
+            if (
+              category === "all" ||
+              card.getAttribute("data-category") === category
+            ) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Search functionality
+      searchInput.addEventListener("input", (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+
+        blogCards.forEach((card) => {
+          const title = card
+            .querySelector(".blog-title")
+            .textContent.toLowerCase();
+          const excerpt = card
+            .querySelector(".blog-excerpt")
+            .textContent.toLowerCase();
+
+          if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

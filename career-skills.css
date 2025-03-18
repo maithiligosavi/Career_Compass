@@ -1,0 +1,205 @@
+/* Import base styles */
+@import url('styles.css');
+
+/* Career Skills specific styles */
+.career-skills-container {
+    max-width: 1400px;
+    margin: 80px auto 0;
+    padding: 20px;
+}
+
+.main-title {
+    text-align: center;
+    color: var(--primary-brown);
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    padding-top: 2rem;
+    border-bottom: 3px solid var(--primary-brown);
+    padding-bottom: 1rem;
+}
+
+.career-category {
+    margin-bottom: 5rem;
+    scroll-margin-top: 100px; /* For smooth scrolling with fixed header */
+}
+
+.category-title {
+    color: var(--secondary-brown);
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--secondary-brown);
+    position: relative;
+}
+
+.career-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.career-card {
+    background-color: var(--white);
+    border-radius: 15px;
+    padding: 1.8rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.career-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.career-card h3 {
+    color: var(--primary-brown);
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--light-beige);
+    text-align: center;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    flex-grow: 1;
+}
+
+.soft-skills, .hard-skills {
+    background-color: var(--light-beige);
+    padding: 1.2rem;
+    border-radius: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.soft-skills h4, .hard-skills h4 {
+    color: var(--secondary-brown);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--secondary-brown);
+}
+
+.soft-skills {
+    border-left: 4px solid var(--accent-color);
+}
+
+.hard-skills {
+    border-left: 4px solid var(--primary-brown);
+}
+
+.soft-skills ul, .hard-skills ul {
+    list-style: none;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.soft-skills li, .hard-skills li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+.soft-skills li::before, .hard-skills li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-brown);
+}
+
+/* Navigation enhancements */
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+.career-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .career-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+
+    .career-card {
+        padding: 1.2rem;
+    }
+
+    .soft-skills, .hard-skills {
+        padding: 1rem;
+    }
+
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .category-title {
+        font-size: 1.6rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    .career-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        border: 1px solid #ddd;
+    }
+
+    .skills-container {
+        page-break-inside: avoid;
+    }
+
+    nav {
+        display: none;
+    }
+} 
